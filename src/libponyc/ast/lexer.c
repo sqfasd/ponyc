@@ -70,6 +70,12 @@ static const lextoken_t symbols[] =
   { "/~", TK_DIVIDE_TILDE },
   { "%~", TK_MOD_TILDE },
 
+  { "+?", TK_PLUS_QUESTION },
+  { "-?", TK_MINUS_QUESTION },
+  { "*?", TK_MULTIPLY_QUESTION },
+  { "/?", TK_DIVIDE_QUESTION },
+  { "%?", TK_MOD_QUESTION },
+
   { "<<", TK_LSHIFT },
   { ">>", TK_RSHIFT },
 
