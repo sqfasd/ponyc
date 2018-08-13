@@ -505,6 +505,12 @@ static token_t* slash(lexer_t* lexer)
     return make_token(lexer, TK_DIVIDE_TILDE);
   }
 
+  if(lookn(lexer, 2) == '?')
+  {
+    consume_chars(lexer, 2);
+    return make_token(lexer, TK_DIVIDE_QUESTION);
+  }
+
   consume_chars(lexer, 1);
   return make_token(lexer, TK_DIVIDE);
 }
@@ -1221,11 +1227,11 @@ static token_id newline_symbols(token_id raw_token, bool newline)
 
   switch(raw_token)
   {
-    case TK_LPAREN:      return TK_LPAREN_NEW;
-    case TK_LSQUARE:     return TK_LSQUARE_NEW;
-    case TK_MINUS:       return TK_MINUS_NEW;
-    case TK_MINUS_TILDE: return TK_MINUS_TILDE_NEW;
-    default:             return raw_token;
+    case TK_LPAREN:         return TK_LPAREN_NEW;
+    case TK_LSQUARE:        return TK_LSQUARE_NEW;
+    case TK_MINUS:          return TK_MINUS_NEW;
+    case TK_MINUS_TILDE:    return TK_MINUS_TILDE_NEW;
+    default:                return raw_token;
   }
 }
 

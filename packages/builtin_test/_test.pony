@@ -70,6 +70,7 @@ actor Main is TestList
     test(_TestAddc)
     test(_TestSubc)
     test(_TestMulc)
+    test(_TestPartialArithmetic)
     test(_TestNextPow2)
     test(_TestNumberConversionSaturation)
     test(_TestMaybePointer)
@@ -1757,6 +1758,16 @@ class iso _TestMulc is SafeArithmeticTest
       I128(0x4000_0000_0000_0000_0000_0000_0000_0000).mulc(-2))
     test[I128](h, (0x7fff_ffff_ffff_ffff_ffff_ffff_ffff_fffe,  true),
       I128(0x4000_0000_0000_0000_0000_0000_0000_0001).mulc(-2))
+
+class iso _TestPartialArithmetic is UnitTest
+  """
+  Test partial arithmetic operators
+  """
+  fun name(): String => "builtin/PartialArithmetic"
+
+  fun apply(h: TestHelper)? =>
+    h.assert_error({()? => U8(1) /? U8(0) })
+    h.assert_eq[U8](U8(5), U8(10) /? U8(2))
 
 class iso _TestNextPow2 is UnitTest
   """
